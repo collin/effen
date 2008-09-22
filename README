@@ -26,6 +26,14 @@ That's all there is to it. But there are some subtle details to bear in mind:
     
  The latter takes precedence because it appears last--NOT because the selector is more specific. This may be changed in future releases.
 
+# Methods can be mixed into other elements
+
+  var el = $('div').fn({foo: function() {}});
+  $('li').mixin($('div'));
+  $('li').fn('foo');
+
+Only methods from the FIRST element in the passed jQuery object will be mixed in.
+
 ## An in-depth example of Concrete Programming ##
 
 Suppose we have the following HTML code, representing a Script that has many Scenes. A Scene has a Video description and many lines of Dialog.
