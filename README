@@ -26,7 +26,7 @@ That's all there is to it. But there are some subtle details to bear in mind:
     
  The latter takes precedence because it appears last--NOT because the selector is more specific. This may be changed in future releases.
 
-# Methods can be mixed into other elements
+* Methods can be mixed into other elements
 
   var el = $('div').fn({foo: function() {}});
   $('li').mixin($('div'));
