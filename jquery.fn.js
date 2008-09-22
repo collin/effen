@@ -11,6 +11,17 @@
       return self;
     }
   }
+  $.fn.mixin = function(element) {
+    var methods = {},
+      data = $.cache[$.data(element[0])],
+      slot;
+      
+    for(slot in data)
+      if(slot.match(/^fn\./))
+        this.data(slot, data[slot]);
+    
+    return this;
+  };
   function define(self, name, fn) {
     self.data(namespacedName(name), fn);
   };

@@ -36,6 +36,27 @@
             i.should("==", 2);
           });
         });
+        jspec.describe('mixin', function() {
+          it("mixes in effen methods", function() {
+            var el = $("<div>");
+            var method = function() {return true};
+            el.fn({foo: method});
+            var clone = el.clone();
+            clone.mixin(el);
+            clone.fn('foo').should('==', true);
+          });
+          
+          it("doesn't mix in other stuff", function() {
+            var el = $("<div>");
+            var clone = el.clone();
+            
+            el.data('chunky', 'bacon');
+            clone.mixin(el);
+            
+            var data = clone.data('chunky');
+            (typeof data === 'undefined').should('==', true);
+          });
+        });
       });
     </script>
   </head>
